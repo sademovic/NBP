@@ -14,7 +14,7 @@ import com.olx.log.service.models.Log;
 
 @RestController
 @RequestMapping("logs/")
-public class GrpcController {
+public class LogController {
 	
 	@Autowired
 	private LogManager logManager;
