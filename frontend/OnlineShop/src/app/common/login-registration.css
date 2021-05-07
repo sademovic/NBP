@@ -1,0 +1,95 @@
+.login-body {
+    width: 100%;
+    min-height: 100%;
+}
+
+.top-bar {
+    width: 100%;
+    height: 80px;
+    background-color: white;
+    box-shadow: 2.5px -2.5px 6px 0.06px #e0e0e0;
+    margin-bottom: 10px;
+}
+
+.online-tag {
+    font-size: 28px;
+}
+
+.ml-15p {
+    margin-left: 15%;
+}
+
+.tag-bold {
+    font-weight: bold;
+}
+
+.buttons-group {
+    margin-right: 15%;
+}
+
+.mr7 {
+    margin-right: 10px;
+}
+
+.mt-20 {
+    margin-top: 36px;
+}
+
+.login-box {
+    width: 35%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #c5c5c5;
+}
+
+.login-form {
+    width: calc(100% - 50px);
+    margin-bottom: 25px;
+    margin-top: 60px;
+}
+
+.form-label {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    border-radius: 3px;
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    margin-bottom: 20px;
+    height: 40px;
+}
+
+.forgot-div {
+    width: 100%;
+    background-color: #f3f3f3;
+    height: 50px;
+    border-top: 1px solid #c5c5c5;
+}
+
+.ml-25 {
+    margin-left: 25px;
+}
+
+.teal-link {
+    color: teal;
+    cursor: pointer;
+}
+
+.no-account-div {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.bd-text {
+    font-weight: bold;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid greenyellow;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid red;
+}
