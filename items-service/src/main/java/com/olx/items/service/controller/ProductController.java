@@ -1,8 +1,5 @@
 package com.olx.items.service.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
 import com.olx.items.service.businesslogic.CategoryManager;
 import com.olx.items.service.businesslogic.ProductManager;
 import com.olx.items.service.businesslogic.UserManager;
 import com.olx.items.service.models.Category;
 import com.olx.items.service.models.Product;
-import com.olx.items.service.models.Image;
 import com.olx.items.service.models.User;
 import com.olx.items.service.validation.ProductModelValidator;
 

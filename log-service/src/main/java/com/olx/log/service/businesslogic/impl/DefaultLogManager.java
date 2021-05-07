@@ -42,4 +42,9 @@ public class DefaultLogManager implements LogManager {
 
 		return logRepository.save(log);
 	}
+
+	@Override
+	public void delete(Long id) {
+		logRepository.deleteById(id);
+	}
 }

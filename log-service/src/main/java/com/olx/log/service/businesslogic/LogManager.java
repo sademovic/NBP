@@ -8,4 +8,6 @@ public interface LogManager {
 	List<Log> getAllLogs();
 	
 	Log save(Log log);
+	
+	void delete(Long id);
 }
