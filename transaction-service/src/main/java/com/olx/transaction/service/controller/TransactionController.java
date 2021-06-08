@@ -22,7 +22,11 @@ import com.olx.transaction.service.models.Transaction;
 import com.olx.transaction.service.models.User;
 import com.olx.transaction.service.validation.TransactionModelValidator;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
+@Api(tags = { "Transaction Controller" })
 public class TransactionController {
 	
 	@Autowired
@@ -37,6 +41,7 @@ public class TransactionController {
 	@Autowired
 	private TransactionModelValidator transactionModelValidator;
 	
+	@ApiOperation(value = "Add a new transaction", notes = "This service method is used to add a new transaction to the system.")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<Object>  addTransaction(@RequestBody TransactionForm requestBody, Errors errors) {
 		
@@ -60,6 +65,7 @@ public class TransactionController {
 		return new ResponseEntity<Object>(transactionManager.save(transaction), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Close transaction", notes = "This service method is used to close transaction.")
 	@RequestMapping(value = "{id}/close", method = RequestMethod.PUT)
     public ResponseEntity<Object> closeTransaction(@PathVariable("id") @NotBlank Long id) {
 		Transaction transaction = transactionManager.getTransactionById(id);
@@ -69,6 +75,7 @@ public class TransactionController {
 		return new ResponseEntity<Object>(transactionManager.closeTransaction(transaction), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Get closed transaction", notes = "This service method is used to get closed transaction to the system for user with {id}.")
 	@RequestMapping(value = "{id}/closed", method = RequestMethod.GET)
     public ResponseEntity<Object> getClosedTransactions(@PathVariable("id") @NotBlank Long id) {
 		User user = userManager.getUserById(id);
@@ -78,6 +85,7 @@ public class TransactionController {
 		return new ResponseEntity<Object>(transactionManager.getClosedTransactions(user), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Get active transaction", notes = "This service method is used to get active transaction to the system for user with {id}.")
 	@RequestMapping(value = "{id}/active", method = RequestMethod.GET)
     public ResponseEntity<Object> getActiveTransactions(@PathVariable("id") @NotBlank Long id) {
 		User user = userManager.getUserById(id);

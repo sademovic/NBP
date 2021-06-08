@@ -16,6 +16,9 @@ public class Log {
 	
 	private String bodyResponse;
 	
+	public Log() {
+		
+	}
 	
 	public Log(Long timestamp, String username, String microservice, String methodType, String resurs,
 			Integer statusCode, String bodyResponse) {

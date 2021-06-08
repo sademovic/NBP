@@ -25,22 +25,26 @@ public class Product {
 	@ManyToOne
 	private User user;
 	
-	private String name;
-	
-	@Column(length = 1449616)
-	private String description;
-	
-	private Double price;
-	
 	private Boolean preOwned;
 	
 	private Boolean status;
 	
 	private Boolean arhived;
 	
+	private String name;
+	
 	private String location;
 	
+	@Column(length = 1449616)
+	private String description;
+	
+	private Double price;
+	
 	private Long createdAt;
+	
+	private Long soldAt;
+	
+	private Long numberOfViews;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="productId", referencedColumnName ="id")
@@ -140,5 +144,21 @@ public class Product {
 
 	public void setImages(List<Image> images) {
 		this.images = images;
+	}
+
+	public Long getSoldAt() {
+		return soldAt;
+	}
+
+	public void setSoldAt(Long soldAt) {
+		this.soldAt = soldAt;
+	}
+
+	public Long getNumberOfViews() {
+		return numberOfViews;
+	}
+
+	public void setNumberOfViews(Long numberOfViews) {
+		this.numberOfViews = numberOfViews;
 	}
 }

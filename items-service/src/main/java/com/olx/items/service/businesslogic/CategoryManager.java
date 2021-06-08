@@ -15,5 +15,4 @@ public interface CategoryManager {
 	Category update(Category product, Long id);
 	
 	void delete(Long id);
-
 }

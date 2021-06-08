@@ -22,8 +22,12 @@ import com.olx.message.service.validation.ChatModelValidator;
 import com.olx.message.service.validation.MessageModelValidator;
 import com.olx.message.service.validation.Validation;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("chat/")
+@Api(tags = { "Chat Controller" })
 public class ChatController {
 	
 	@Autowired
@@ -38,6 +42,7 @@ public class ChatController {
 	@Autowired
 	private MessageModelValidator messageModelValidator;
 	
+	@ApiOperation(value = "Get my chat", notes = "This service method is used to get all chat from specific user.")
 	@RequestMapping(value = "my", method = RequestMethod.POST)
     public ResponseEntity<Object>  getMyChat(@RequestBody RequestForm form,
     										 Errors errors) {
@@ -50,6 +55,7 @@ public class ChatController {
 		return new ResponseEntity<Object>(chatManager.getMyChat(user), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Add message to caht", notes = "This service method is used to add a message to the specific chat.")
 	@RequestMapping(value = "{id}/message/add", method = RequestMethod.POST)
     public ResponseEntity<Object>  addMessage(@RequestBody Message message, 
     						  @PathVariable(required = true) Long id,
@@ -69,6 +75,7 @@ public class ChatController {
 		return new ResponseEntity<Object>(chatManager.save(chat), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Add new chat", notes = "This service method is used to add a chat.")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<Object>  addChat(@RequestBody Message message, 
     									   @RequestParam(required = true) Long receiverId,
@@ -91,6 +98,7 @@ public class ChatController {
 		return new ResponseEntity<Object>(chatManager.save(chat), HttpStatus.OK);
     }
 	
+	@ApiOperation(value = "Delete chat", notes = "This service method is used to delete chat by id.")
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Object> deleteChatById(@PathVariable("id") Long id) {
 		Chat chat = chatManager.getChatById(id);

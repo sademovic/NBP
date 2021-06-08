@@ -1,11 +1,19 @@
 package com.olx.user.service.businesslogic.impl;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.social.support.URIBuilder;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 import com.olx.user.service.businesslogic.UserManager;
 import com.olx.user.service.models.User;
@@ -18,6 +26,9 @@ public class DefaultUserManager implements UserManager {
 	private UserRepository userRepository;
 	
 	@Autowired
+	private RestTemplate restTemplate;
+	
+	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
 
@@ -25,7 +36,17 @@ public class DefaultUserManager implements UserManager {
 	@Override
 	public User save(User user) {
 		user.setPassword(encoder.encode(user.getPassword()));
-		return userRepository.save(user);
+		
+		User isAdded = userRepository.save(user);
+		
+		if (isAdded != null) {
+			addUserInAnotherMicroService(user, "http://items-service/users/add");
+			addUserInAnotherMicroService(user, "http://message-service/users/add");
+			addUserInAnotherMicroService(user, "http://transaction-service/users/add");
+			addUserInAnotherMicroService(user, "http://auth-service/users/add");
+		}
+		
+		return isAdded;
 	}
 
 
@@ -77,5 +98,27 @@ public class DefaultUserManager implements UserManager {
 		}
 		
 		return save(current);
+	}
+	
+	@EventListener(ApplicationReadyEvent.class)
+	private void setup() {
+		User user = new User();
+		user.setFirstName("Admin");
+		user.setLastName("Admin");
+		user.setEmail("ralilovic1@etf.unsa.ba");
+		user.setPassword("admin");
+		user.setRole("ADMIN");
+		
+		save(user);
+	}
+	
+	
+	private void addUserInAnotherMicroService(User user, String url) {
+		URI uri = URIBuilder.fromUri(url).build();
+    	RequestEntity<User> request = RequestEntity.method(HttpMethod.POST, uri)
+    											.contentType(MediaType.APPLICATION_JSON)
+    											.body(user);
+    	
+		restTemplate.exchange(request, Boolean.class);
 	}
 }

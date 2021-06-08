@@ -1,9 +1,12 @@
 package com.olx.items.service.businesslogic.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
 import com.olx.items.service.businesslogic.CategoryManager;
@@ -49,6 +52,17 @@ public class DefaultCategoryManager implements CategoryManager {
 	@Override
 	public void delete(Long id) {
 		categoryRepository.deleteById(id);
+	}
+	
+	@EventListener(ApplicationReadyEvent.class)
+	private void setup() {
+		List<String> categories = Arrays.asList("Vozila", "Nekretnine", "Odjeca");
+		categories.stream().forEach((name) -> {
+			Category category = new Category();
+			category.setName(name);
+			category.setParentId(null);
+			save(category);
+		});
 	}
 
 }

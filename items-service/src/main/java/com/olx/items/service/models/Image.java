@@ -1,4 +1,7 @@
+
 package com.olx.items.service.models;
+
+import javax.persistence.Column;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +15,15 @@ public class Image {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	@Column(length = 1449616)
 	private String image;
 	
 	public Image() {
 		
+	}
+
+	public Image(byte[] image) {
+		this.image =  new String(image);
 	}
 
 	public Long getId() {
