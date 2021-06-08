@@ -1,0 +1,39 @@
+<div class="login-body d-flex flex-column align-items-center">
+    <div class="top-bar d-flex align-items-center justify-content-between">
+        <div class="online-tag ml-15p d-flex unselectable">
+            <div class="tag-bold">ONLINE</div>
+            <div>SHOP</div>
+        </div>
+        <div class="buttons-group d-flex align-items-center">
+            <button class="btn btn-success mr7" (click)="onNavigate('/login')">Log in</button>
+            <button class="btn btn-success" (click)="onNavigate('/registration')">Sign up</button>
+        </div>
+    </div>
+    <div class="login-box d-flex flex-column align-items-center">
+        <div class="online-tag mt-20 d-flex unselectable">
+            <div class="tag-bold">ONLINE</div>
+            <div>SHOP</div>
+        </div>
+        <form #loginForm="ngForm" class="login-form d-flex flex-column" (submit)="onSubmit($event)">
+            <div class="form-label unselectable">Email :</div>
+            <input type="text" placeholder="Email" class="form-input" id="email" required [(ngModel)]="user.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Email is required
+            </div>
+            <div class="form-label unselectable">Password :</div>
+            <input type="password" placeholder="Password" class="form-input" id="password" required [(ngModel)]="user.password" name="password" #password="ngModel">
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                Password is required
+            </div>
+            <button type="submit" class="btn btn-success w-100" [disabled]="!loginForm.form.valid">Sign in</button>
+            <div [hidden]="(password.dirty || email.dirty) || !failed" class="alert alert-danger">
+                Login failed
+            </div>
+        </form>
+    </div>
+    <div class="no-account-div d-flex flex-column align-items-center unselectable">
+        <div>Don't have an account?</div>
+        <a class="teal-link bd-text" [routerLink]="['/registration']">Sign up!</a>
+        <!-- <div (click)="testingSkip()">skip</div> -->
+    </div>
+</div>

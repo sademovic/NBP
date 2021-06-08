@@ -1,0 +1,92 @@
+<div class="login-body d-flex flex-column align-items-center">
+    <div class="top-bar d-flex align-items-center justify-content-between">
+        <div class="online-tag ml-15p d-flex unselectable">
+            <div class="tag-bold">ONLINE</div>
+            <div>SHOP</div>
+        </div>
+        <div class="buttons-group d-flex align-items-center">
+            <button class="btn btn-success mr7" (click)="onNavigate('/login')">Log in</button>
+            <button class="btn btn-success" (click)="onNavigate('/registration')">Sign up</button>
+        </div>
+    </div>
+    <div class="login-box d-flex flex-column align-items-center">
+        <div class="online-tag mt-20 d-flex unselectable">
+            <div class="tag-bold">ONLINE</div>
+            <div>SHOP</div>
+        </div>
+        <form #signupForm="ngForm" class="login-form d-flex flex-column" (submit)="onSubmit($event)">
+            <div class="form-label unselectable">First name :</div>
+            <input type="text" placeholder="First name" class="form-input" id="firstName" required [(ngModel)]="user.firstName" name="firstName" #firstName="ngModel">
+            <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+                <div *ngIf="!user.firstName">
+                    First name is required
+                </div>
+                <div *ngIf="checkFN()">
+                    First letter must be capital and the field cannot contain numbers
+                </div>
+            </div>
+            <div class="form-label unselectable">Last name :</div>
+            <input type="text" placeholder="Last name" class="form-input" id="lastName" required [(ngModel)]="user.lastName" name="lastName" #lastName="ngModel">
+            <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                <div *ngIf="!user.lastName">
+                    Last name is required
+                </div>
+                <div *ngIf="checkLN()">
+                    First letter must be capital and the field cannot contain numbers
+                </div>
+            </div>
+            <div class="form-label unselectable">Email :</div>
+            <input type="text" placeholder="Email" class="form-input" id="email" required [(ngModel)]="user.email" name="email" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                <div *ngIf="!user.email">
+                    Email is required
+                </div>
+                <div *ngIf="checkMail()">
+                    Email not valid
+                </div>
+            </div>
+            <div class="form-label unselectable">Password :</div>
+            <input type="password" placeholder="Password" class="form-input" id="password1" required [(ngModel)]="user.password" name="password1" #password1="ngModel">
+            <div [hidden]="password1.valid || password1.pristine" class="alert alert-danger">
+                <div *ngIf="!user.password">
+                    Password is required
+                </div>
+                <div *ngIf="checkPwLength()">
+                    Password must be atleast 6 characters long
+                </div>
+            </div>
+            <div class="form-label unselectable">Repeat password :</div>
+            <input type="password" placeholder="password" class="form-input" id="password2" required [(ngModel)]="passwordRepeat" name="password2" #password2="ngModel">
+            <div [hidden]="password2.valid || password1.pristine" class="alert alert-danger">
+                <div *ngIf="!PwMatch()">
+                    Passwords must match
+                </div>
+            </div>
+            <div class="form-label unselectable">Location :</div>
+            <input type="text" placeholder="Location" class="form-input" id="location" required [(ngModel)]="user.location" name="location" #location="ngModel">
+            <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
+                <div *ngIf="!user.location">
+                    Location is required
+                </div>
+                <div *ngIf="checkLoc()">
+                    Location must be atleast 3 characters long
+                </div>
+            </div>
+            <div class="form-label unselectable">Phone number :</div>
+            <input type="number" placeholder="Phone number" class="form-input" id="phoneNumber" required [(ngModel)]="user.phoneNumberNum" name="phoneNumber" #phoneNumber="ngModel">
+            <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class="alert alert-danger">
+                <div *ngIf="!user.phoneNumberNum">
+                    Phone number is required
+                </div>
+                <div *ngIf="checkNumLength()">
+                    Number must be 11 digits long
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success w-100" [disabled]="!signupForm.form.valid">Sign up</button>
+        </form>
+    </div>
+    <div class="no-account-div d-flex flex-column align-items-center unselectable">
+        <div>Have an account?</div>
+        <a class="teal-link bd-text" [routerLink]="['/login']">Log in!</a>
+    </div>
+</div>
