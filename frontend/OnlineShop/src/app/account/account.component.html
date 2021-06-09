@@ -1,0 +1,51 @@
+<div class="component-body unselectable d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="account-group d-flex">
+        <div class="profile-transc d-flex flex-column">
+            <div class="profile-box box">
+                <div class="profile-upper border-b d-flex align-items-center">
+                    <div class="image-div marr-p"></div>
+                    <div class="d-flex flex-column marr-p">
+                        <div class="profile-lb">First name</div>
+                        <div class="profile-nm">{{me.firstName}}</div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="profile-lb">Last name</div>
+                        <div class="profile-nm">{{me.lastName}}</div>
+                    </div>
+                </div>
+                <div class="profile-lower">
+                    <div class="profile-line d-flex justify-content-between">
+                        <div>Location</div>
+                        <div>{{me.location}}</div>
+                    </div>
+                    <div class="profile-line d-flex justify-content-between">
+                        <div>Phone number</div>
+                        <div>{{me.phoneNumber}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="items-box box d-flex flex-column">
+            <div class="select-box border-b d-flex">
+                <div [ngClass]="isFilter('active') ? 'bwhite' : ''" class="itemlist-select d-flex align-items-center justify-content-center" (click)="setFilter('active')">Active</div>
+                <div [ngClass]="isFilter('sold') ? 'bwhite' : ''" class="itemlist-select d-flex align-items-center justify-content-center" (click)="setFilter('sold')">Sold</div>
+            </div>
+            <div class="items-list d-flex">
+                <div *ngFor="let item of items" (click)="onItemSelect(item)">
+                    <div *ngIf="filMatch(item)" class="item-box clickable d-flex flex-column justify-content-between">
+                        <img *ngIf="hasImage(item)" [src]="getUrl(item)" class="img-it align-self-center">
+                        <div class="item-info d-flex flex-column">
+                            <div class="item-name text-truncate">{{item.name}}</div>
+                            <div class="item-more d-flex">
+                                <div *ngIf="!item.preOwned" class="marr-6">New</div>
+                                <div>{{item.createdAt | date:'dd.MM.yyyy'}}</div>
+                            </div>
+                        </div>
+                        <div class="item-price align-self-end">{{item.price}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

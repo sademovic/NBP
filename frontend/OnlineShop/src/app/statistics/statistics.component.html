@@ -1,0 +1,12 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="date-select d-flex align-items-center">
+        <div class="date-l mar unselectable">After date: </div>
+        <input #dateInput type="date" class="mar">
+        <button class="btn btn-primary sc-btn mar" (click)="onDate()">Apply</button>
+        <button class="btn btn-outline-secondary sc-btn-c" (click)="onClear()">Clear</button>
+    </div>
+    <ngx-charts-bar-vertical class="chart" [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel" (select)="onSelect($event)">
+    </ngx-charts-bar-vertical>
+</div>

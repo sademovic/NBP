@@ -1,0 +1,52 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="search-div d-flex">
+        <input #searchInput type="text" class="search-input" placeholder="Search">
+        <button class="btn btn-primary sc-btn" (click)="onSearch()">Search</button>
+        <button class="btn btn-secondary sc-btn-c" (click)="searchReset()">Clear</button>
+    </div>
+    <div class="browse-main d-flex justify-content-between">
+        <div class="browse-categories box d-flex flex-column unselectable">
+            <div *ngIf="checkItems()" class="trending-box">
+                <div class="trendl">Trending item:</div>
+                <div class="item-box mlr20 clickable d-flex flex-column justify-content-between" (click)="onItemSelect(trending)">
+                    <img *ngIf="hasImage(trending)" [src]="getUrl(trending)" class="img-it align-self-center">
+                    <div class="item-info d-flex flex-column">
+                        <div class="item-name text-truncate">{{trending.name}}</div>
+                        <div class="item-more d-flex">
+                            <div *ngIf="!trending.preOwned" class="marr-6">New</div>
+                            <div>{{trending.createdAt | date:'dd.MM.yyyy'}}</div>
+                        </div>
+                    </div>
+                    <div class="item-price align-self-end">{{trending.price}}</div>
+                </div>
+            </div>
+            <div class="cat-title d-flex align-items-center">Categories :</div>
+            <div *ngFor="let category of categories; let i = index" [attr.data-index]="i"
+                [ngClass]="isSelected(category) ? 'cat-selected' : ''"
+                class="cat-div clickable d-flex flex-column justify-content-center" (click)="selectCat(category)">
+                <div class="cat-label">{{category.name}}</div>
+            </div>
+        </div>
+        <div class="browse-body d-flex flex-column">
+            <div class="items-div">
+                <div class="items-list d-flex">
+                    <div *ngFor="let item of items" (click)="onItemSelect(item)">
+                        <div *ngIf="catMatch(item) && !sold(item)"
+                            class="item-box clickable d-flex flex-column justify-content-between">
+                            <img *ngIf="hasImage(item)" [src]="getUrl(item)" class="img-it align-self-center">
+                            <div class="item-info d-flex flex-column">
+                                <div class="item-name text-truncate">{{item.name}}</div>
+                                <div class="item-more d-flex">
+                                    <div *ngIf="!item.preOwned" class="marr-6">New</div>
+                                    <div>{{item.createdAt | date:'dd.MM.yyyy'}}</div>
+                                </div>
+                            </div>
+                            <div class="item-price align-self-end">{{item.price}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

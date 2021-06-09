@@ -1,0 +1,19 @@
+<div class="top-bar d-flex align-items-center justify-content-between">
+    <div class="online-tag ml-15p d-flex unselectable clickable" (click)="onNavigate('/browse')">
+        <div class="tag-bold">ONLINE</div>
+        <div>SHOP</div>
+    </div>
+    <div class="buttons-group d-flex align-items-center">
+        <div class="d-inline-block" ngbDropdown #barDrop="ngbDropdown">
+            <button class="btn btn-light drop-btn" id="dropdownBtn" ngbDropdownToggle>{{me.firstName}}</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBtn" ngbDropdownMenu>
+                <button ngbDropdownItem (click)="onNavigate('/account')">Account</button>
+                <button ngbDropdownItem (click)="onNavigate('/messages')">Messages</button>
+                <button ngbDropdownItem (click)="onNavigate('/statistics')">Statistics</button>
+                <button *ngIf="me.role=='ADMIN'" ngbDropdownItem (click)="onNavigate('/admin')">Admin panel</button>
+                <button ngbDropdownItem (click)="onNavigate('/login')">Log out</button>
+            </div>
+        </div>
+        <button class="btn btn-danger" (click)="onNavigate('/newitem')">Post Item</button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="mail-div d-flex flex-column align-items-center">
+        <div class="mail-top d-flex align-items-center unselectable">
+            <button class="btn btn-outline-secondary align-self-start" (click)="goBack()">Back</button>
+            <div class="m-label">From :</div>
+            <div class="m-mail">{{me.email}}</div>
+            <div class="m-label">To :</div>
+            <div class="m-mail">{{item.user.email}}</div>
+        </div>
+        <div class="mail-main d-flex justify-content-center">
+            <textarea #mailInput name="mailBody" id="mb" class="mail-body"></textarea>
+        </div>
+        <div class="submit-row d-flex justify-content-end">
+            <button *ngIf="!sendDisabled" class="btn btn-primary align-self-start" (click)="send()">Send</button>
+            <div *ngIf="sentSuccess" class="sent-s unselectable">Mail sent!</div>
+        </div>
+    </div>
+</div>

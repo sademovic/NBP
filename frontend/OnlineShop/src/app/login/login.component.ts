@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(event) {
     event.preventDefault();
-    console.log(this.user);
     this.userService.login({ "username": this.user.email, "password": this.user.password });
   }
 
