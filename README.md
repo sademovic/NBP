@@ -1,10 +1,10 @@
 # NBP
 
-#Opis teme 
+# Opis teme 
 
 U okviru ovog kursa razvijat ćemo aplikaciju koja omogućava veoma jednostavnu kupovinu, odnosno prodaju artikala na web stranici. Svako ko pristupi stranici može pretraživati artikle koji su objavljeni za prodaju. Sa druge strane,  samo registrovani korisnici mogu objavljivati artikle spremne za prodaju. Zainteresovani posjetitelji stranice, moći će kontaktirati prodavca na više načina kao što su: pozivom na kontakt broj, slanjem poruke, slanjem maila na adresu koju je prodavac iskoristio za registraciju na stranicu i sl.
 
-#Funkcionalnosti
+# Funkcionalnosti
 
 Online shop „ProdajIKupi“ sadrži sljedeće funkcionalnosti:
 1.	Kreiranje korisničkog računa - Korisnik može kreirati račun ako želi da objavi artikal za prodaju.
@@ -25,7 +25,7 @@ Online shop „ProdajIKupi“ sadrži sljedeće funkcionalnosti:
 
 
 
-#Projekat se sastoji od 5 mikroservisa
+# Projekat se sastoji od 5 mikroservisa
 
 1.	UserService
 2.	ItemsService
@@ -35,7 +35,7 @@ Online shop „ProdajIKupi“ sadrži sljedeće funkcionalnosti:
 6.	AuthService
 
 
-#Tehnološki stack
+# Tehnološki stack
 
 Za back-end dio ce se koristiti Spring Boot, za discovery server Eureka, za API getaway Zuul, te za front-end Angular. Koristi cemo relacionu bazu podataka PostgreSQL.
 
