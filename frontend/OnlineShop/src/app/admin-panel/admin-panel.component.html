@@ -1,0 +1,39 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="logsDiv d-flex flex-column">
+        <div *ngFor="let log of logs" class="log-box box d-flex flex-column">
+            <div class="d-flex logItem">
+                <div class="log-label">id :</div>
+                <div class="log-font">{{log.id}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">timestamp :</div>
+                <div class="log-font">{{log.timestamp | date:'dd.MM.yyyy'}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">username :</div>
+                <div class="log-font">{{log.username}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">microservice :</div>
+                <div class="log-font">{{log.microservice}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">methodType :</div>
+                <div class="log-font">{{log.methodType}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">resurs :</div>
+                <div class="log-font">{{log.resurs}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">statusCode :</div>
+                <div class="log-font">{{log.statusCode}}</div>
+            </div>
+            <div class="d-flex logItem">
+                <div class="log-label">bodyResponse :</div>
+                <textarea class="logItemArea flex-grow-1">{{log.bodyResponse}}</textarea>
+            </div>
+        </div>
+    </div>
+</div>

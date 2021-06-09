@@ -1,0 +1,38 @@
+.logsDiv {
+    width: 80%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.log-box {
+    margin-bottom: 20px;
+}
+
+.logItem {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+
+.log-font {
+    color: #333;
+    font-size: 13px;
+}
+
+.log-label {
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.logItemArea {
+    color: rgb(146, 146, 146);
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+.fbtn {
+    margin-bottom: 20px;
+}

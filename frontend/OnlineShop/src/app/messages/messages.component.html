@@ -1,0 +1,15 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="d-flex btnss align-self-start">
+        <button class="btn btn-secondary mrr20" (click)="onFilterSet('buying')">Buying</button>
+        <button class="btn btn-secondary" (click)="onFilterSet('selling')">Selling</button>
+    </div>
+    <div class="messages-div box d-flex flex-column unselectable">
+        <div *ngIf="noChat" class="nocc">No messages</div>
+        <div *ngFor="let chat of chatlist" class="chatdiv">
+            <div *ngIf="show(chat)" class="chatbox d-flex align-items-center clickable" (click)="openChat(chat)">
+                {{chat.receiver.firstName}} {{chat.receiver.lastName}}
+            </div>
+        </div>
+    </div>
+</div>

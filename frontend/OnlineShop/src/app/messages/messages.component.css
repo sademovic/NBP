@@ -1,0 +1,28 @@
+.messages-div {
+    width: 80%;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.chatbox {
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.chatdiv {
+    width: 100%;
+}
+
+.nocc {
+    margin: 40px;
+}
+
+.mrr20 {
+    margin-right: 20px;
+}
+
+.btnss {
+    margin: 30px;
+    margin-left: 60px;
+}

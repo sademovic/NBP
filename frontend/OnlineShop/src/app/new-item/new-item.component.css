@@ -1,0 +1,77 @@
+.item-div {
+    width: 45%;
+    margin-top: 20px;
+    margin-left: 20%;
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0px 1.5px 6px 0.06px #e0e0e0;
+}
+
+.item-title {
+    width: 100%;
+    height: 55px;
+    font-size: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.next-btn {
+    width: 25%;
+}
+
+.item-form {
+    width: calc(100% - 40px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.form-label {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+}
+
+.m-b-8 {
+    margin-bottom: 8px;
+}
+
+.form-input {
+    border-radius: 3px;
+    width: 100%;
+    border: 1px solid #c5c5c5;
+    margin-bottom: 20px;
+    height: 40px;
+    padding-left: 5px;
+}
+
+.mr-6 {
+    margin-right: 6px;
+}
+
+.cbox {
+    margin-top: 2px;
+}
+
+.input-box-div {
+    margin-bottom: 20px;
+}
+
+.categ-label {
+    width: 80px;
+}
+
+.subcateg-label {
+    width: 110px;
+}
+
+.no-mar-bot {
+    margin-bottom: 0px;
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid greenyellow;
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid red;
+}
