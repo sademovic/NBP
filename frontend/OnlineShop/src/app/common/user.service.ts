@@ -4,13 +4,14 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 @Injectable()
 export class UserService {
 
-    baseUrl = "http://localhost:8080/";
+    baseUrl = "http://54aaa8a82af5.ngrok.io/";
 
     loginHeaders = {  };
 
     loginFailed = new EventEmitter();
     loginSuccess = new EventEmitter<any>();
     registerSuccess = new EventEmitter();
+    mailSuccess = new EventEmitter();
 
     private myUser: any;
     private token: string;
@@ -48,6 +49,17 @@ export class UserService {
                 this.registerSuccess.emit();
             },
             error: error => console.error('There was a registration error!', error)
+        });
+    }
+
+    mailUser( itemId, mailBody ) {
+        var params = new HttpParams().set( 'id', itemId ).set( 'body', mailBody );
+        this.http.post( this.baseUrl + "itemservice/products/mail", {  }, { headers: { 'Authorization': "Bearer " + this.token }, params: params } ).subscribe({
+            next: res => {
+                console.log("success", res);
+                this.mailSuccess.emit();
+            },
+            error: error => console.error('There was a mail error!', error)
         });
     }
 

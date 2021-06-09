@@ -1,0 +1,13 @@
+<div class="component-body d-flex flex-column align-items-center">
+    <app-topbar class="w-100"></app-topbar>
+    <div class="chat-div d-flex flex-column">
+        <button class="btn btn-outline-secondary bbtn align-self-start" (click)="goBack()">Back</button>
+        <div *ngFor="let message of messages" class="message-box box d-flex align-items-center">
+            <div class="message-text">{{message.body}}</div>
+        </div>
+        <div class="input-box d-flex">
+            <input #msgInput type="text" class="msg-input" (keyup.enter)="send()">
+            <button class="btn btn-primary snd-btn" (click)="send()">Send</button>
+        </div>
+    </div>
+</div>
